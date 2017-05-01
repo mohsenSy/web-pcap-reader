@@ -4,6 +4,6 @@ This web application built using Django can be used to read and view pcap files 
 ## Install instructions
 * Clone this repository using `$ git clone https://github.com/mohsenSy/web-pcap-reader`.
 * run `$ vagrant up`
-* Access the web app at **http://loclahost:8000**.
+* Access the web app at **http://localhost:8000**.
 
 More info to be added later.
