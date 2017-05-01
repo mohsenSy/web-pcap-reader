@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.conf import settings
 
 from . import pcap_analyse
 
@@ -11,17 +12,20 @@ import os
 def home(request):
     return render(request, 'pcap_main/home.html')
 
+def settings_page(request):
+    return render(request, 'pcap_main/settings_page.html')
+
 def read(request):
-    listing = os.listdir("/var/pcap")
+    listing = os.listdir(settings.PCAP_DIR)
     files = []
     for l in listing:
-        if os.path.isfile("/var/pcap/" + l):
+        if os.path.isfile(settings.PCAP_DIR + "/" + l):
             files.append(l)
 
     return render(request, 'pcap_main/read.html', {'files': files})
 
 def readfile(request, filename):
-    filepath = "/var/pcap/" + filename
+    filepath = settings.PCAP_DIR + "/" + filename
     if not os.path.isfile(filepath):
         return render(request, "pcap_main/file_not_found.html", {"filename": filename})
 

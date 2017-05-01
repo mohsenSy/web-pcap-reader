@@ -14,7 +14,8 @@
     <div class="container" id="container">
     <ul class="nav nav-pills">
       <li role="presentation" class="active"><a href="/">Home</a></li>
-      <li role="presentation"><a href="/read">Read Files</a></li>
+      <li role="presentation"><a href={% url "read" %}>Read Files</a></li>
+      <li role="presentation"><a href={% url "settings_page" %}>Settings</a></li>
     </ul>
     <div id="body">
       {% block body %}
