@@ -59,6 +59,7 @@ class pcap_reader:
                 packet["src_port"] = src_port
                 packet["dst_port"] = dst_port
                 if dst_port == 80 and len(tcp.data) > 0:
+                    # HTTP Packet
                     http = dpkt.http.Request(tcp.data)
                     method = http.method
                     uri = http.uri

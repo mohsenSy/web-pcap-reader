@@ -8,8 +8,8 @@ import os
 
 # Create your views here.
 
-def index(request, name):
-    return render(request, 'pcap_main/index.html', {'name': name})
+def home(request):
+    return render(request, 'pcap_main/home.html')
 
 def read(request):
     listing = os.listdir("/var/pcap")
