@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+   <div class="panel-heading" role="tab" id="heading{{forloop.counter}}">
+     <h4 class="panel-title">
+      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+        {{ p.ts }} : {{ p.ip_src }} -> {{ p.ip_dst }}
+      </a>
+    </h4>
+  </div>
+  <div id="collapse{{forloop.counter}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{forloop.counter}}">
+    <div class="panel-body">
+      <p>source port is {{ p.src_port }} and destination port is {{ p.dst_port }}</p>
+      {% if p.app == "http" %}
+        <p>method is {{ p.app_data.method }} and url is {{ p.app_data.uri }} user-agent is {{ p.app_data.user_agent }} </p>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+<title>
+  PCAP Dir
+</title>
+{% endblock %}
+
+{% block body %}
+<h1> Files in pcap dir are </h1>
+<ul class="list-group">
+  {% for f in files %}
+  <a class="list-group-item" href={% url 'readfile' filename=f %}> {{ f }} </a>
+  {% endfor %}
+</ul>
+{% endblock %}

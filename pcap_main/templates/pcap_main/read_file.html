@@ -1,0 +1,38 @@
+
+{% extends "base.html" %}
+{% block title %}
+<title>
+  Parse {{ filename }}
+</title>
+{% endblock %}
+{% block body %}
+<h1>parsing contents of {{ filename }}</h1>
+<p>There are {{ count }} packets in {{ filename }}, showing {{ packets|length }} packets from {{ packets.start_index }} to {{ packets.end_index }} </p>
+<hr>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  {% for p in packets %}
+    {% include "pcap_main/packet.html" %}
+  {% endfor %}
+</div>
+{% if packets.has_other_pages %}
+  <ul class="pagination">
+    {% if packets.has_previous %}
+      <li><a href="?page={{ packets.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in packets.paginator.page_range %}
+      {% if packets.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if packets.has_next %}
+      <li><a href="?page={{ packets.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+{% endblock %}

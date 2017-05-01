@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>
+  Invalid file {{ filename }}
+</title>
+{% endblock %}
+
+{% block body %}
+  <p>The file {{ filename }} is not a valid PCAP file</p>
+{% endblock %}
