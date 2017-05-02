@@ -13,7 +13,8 @@ def home(request):
     return render(request, 'pcap_main/home.html')
 
 def settings_page(request):
-    return render(request, 'pcap_main/settings_page.html')
+    all_settings = pcap_settings.get_all_settings()
+    return render(request, 'pcap_main/settings_page.html',{"all_settings": all_settings})
 
 def settings_page_edit(request):
     if request.method == "POST":

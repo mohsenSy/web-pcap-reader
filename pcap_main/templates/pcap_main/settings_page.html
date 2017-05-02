@@ -8,4 +8,9 @@
 
 {% block body %}
   <h1>Settings Page</h1>
+  <ul class="list-group">
+  {% for setting in all_settings %}
+      <li class="list-group-item"> {{ setting.0 }} : {{ setting.1 }}</li>
+  {% endfor %}
+</ul>
 {% endblock %}
