@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.conf import settings
+
 from . import pcap_analyse
 from . import pcap_settings
 
@@ -14,6 +14,13 @@ def home(request):
 
 def settings_page(request):
     return render(request, 'pcap_main/settings_page.html')
+
+def settings_page_edit(request):
+    if request.method == "POST":
+        pass
+    elif request.method == "GET":
+        pass
+    return render(request, 'pcap_main/settings_page_edit.html')
 
 def read(request):
     listing = os.listdir(pcap_settings.get_option("pcap", "pcap_dir"))
