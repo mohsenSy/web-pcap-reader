@@ -8,4 +8,12 @@
 
 {% block body %}
   <h1>Edit Settings Page</h1>
+  <form action={% url "settings_page_edit" %} method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+      <div class="alert alert-danger">{{ form.errors.pcap_dir.0 }} </div>
+    {% endif %}
+    {{ form }}
+    <input type="submit" value="Save Settings" />
+  </form>
 {% endblock %}

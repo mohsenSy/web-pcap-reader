@@ -4,6 +4,8 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from . import pcap_analyse
 from . import pcap_settings
+from .forms import EditSettingsForm
+
 
 import os
 
@@ -18,10 +20,13 @@ def settings_page(request):
 
 def settings_page_edit(request):
     if request.method == "POST":
-        pass
+        form = EditSettingsForm(request.POST)
+        if form.is_valid():
+            pcap_settings.set_option("pcap", "pcap_dir", form.cleaned_data["pcap_dir"])
+            pcap_settings.save_settings()
     elif request.method == "GET":
-        pass
-    return render(request, 'pcap_main/settings_page_edit.html')
+        form = EditSettingsForm()
+    return render(request, 'pcap_main/settings_page_edit.html', {'form': form})
 
 def read(request):
     listing = os.listdir(pcap_settings.get_option("pcap", "pcap_dir"))

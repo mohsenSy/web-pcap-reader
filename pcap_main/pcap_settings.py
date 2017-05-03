@@ -14,10 +14,10 @@ def get_option(section, option):
         return config.get(section, option)
     return None
 
-def set_option(section, option):
-    config.set(section, option)
+def set_option(section, option, value):
+    config.set(section, option, value)
 
-def save_config():
+def save_settings():
     config.write(open(os.path.join(settings.BASE_DIR, "conf/pcap.conf"), "w"))
 
 def get_all_settings():
