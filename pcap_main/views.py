@@ -29,7 +29,10 @@ def settings_page_edit(request):
     return render(request, 'pcap_main/settings_page_edit.html', {'form': form})
 
 def read(request):
-    listing = os.listdir(pcap_settings.get_option("pcap", "pcap_dir"))
+    try:
+        listing = os.listdir(pcap_settings.get_option("pcap", "pcap_dir"))
+    except OSError as e:
+        return render(request, 'pcap_main/read.html')
     files = []
     for l in listing:
         if os.path.isfile(pcap_settings.get_option("pcap", "pcap_dir") + "/" + l):

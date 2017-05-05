@@ -8,10 +8,14 @@
 {% endblock %}
 
 {% block body %}
+{% if files %}
 <h1> Files in pcap dir are </h1>
 <ul class="list-group">
   {% for f in files %}
   <a class="list-group-item" href={% url 'readfile' filename=f %}> {{ f }} </a>
   {% endfor %}
 </ul>
+{% else %}
+  <h1 class="alert alert-danger">PCAP directory not found</h1>
+{% endif %}
 {% endblock %}

@@ -25,7 +25,7 @@ footer {
   height: 60px;
 }
 
-.errorlist {
+.errorlist li {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
