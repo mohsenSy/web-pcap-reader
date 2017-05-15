@@ -9,6 +9,8 @@
   <div id="collapse{{forloop.counter}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{forloop.counter}}">
     <div class="panel-body">
       <p>source port is {{ p.src_port }} and destination port is {{ p.dst_port }}</p>
+      <p>Sequence number is {{ p.seq }} and Acknowledge number is {{ p.ack }}</p>
+      <p>Length is {{ p.len }}</p>
       {% if p.app == "http" %}
         <p>method is {{ p.app_data.method }} and url is {{ p.app_data.uri }} user-agent is {{ p.app_data.user_agent }} </p>
       {% endif %}
