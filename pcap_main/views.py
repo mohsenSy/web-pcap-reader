@@ -14,20 +14,6 @@ import os
 def home(request):
     return render(request, 'pcap_main/home.html')
 
-def settings_page(request):
-    all_settings = pcap_settings.get_all_settings()
-    return render(request, 'pcap_main/settings_page.html',{"all_settings": all_settings})
-
-def settings_page_edit(request):
-    if request.method == "POST":
-        form = EditSettingsForm(request.POST)
-        if form.is_valid():
-            pcap_settings.set_option("pcap", "pcap_dir", form.cleaned_data["pcap_dir"])
-            pcap_settings.save_settings()
-    elif request.method == "GET":
-        form = EditSettingsForm()
-    return render(request, 'pcap_main/settings_page_edit.html', {'form': form})
-
 def read(request):
     try:
         listing = os.listdir(pcap_settings.get_option("pcap", "pcap_dir"))
